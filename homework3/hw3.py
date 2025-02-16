@@ -7,7 +7,7 @@ def computepower(x, y):
     for i in range(0, y):
         answer*=x
     return answer
-computepower(2,10)
+computepower(2,3)
 #2 What Should I Wear?
 #You are trying to decide what to wear to the Python DeCal lecture, but you
 #are only concerned about the day’s lowest and highest temperatures. Write a
@@ -106,22 +106,28 @@ find_max_with_while_loops(nums)
 #Write a function that takes a string as an input and returns the number of vowels
 #in the string and the number of consonants in the string as tuple. Don’t forget
 #about capital letters! Hint: You can use .isalpha() to check if a character is a letter.
-text = "         "
+text = "UC Berkeley, founded in 1868!"
 def vowel_and_consonant_count(text):
-    consonants = 0
+    consonants = 0-(text.isalpha())
     vowels = 0
     vowelcharacters = ("a", "e", "i", "o", "u", "A", "E", "I", "O", "U")    
     for i in range(0,len(text)):
         if text[i] in vowelcharacters:
             vowels +=1
-        if text[i] not in vowelcharacters:
+        elif text[i] not in vowelcharacters:
             consonants +=1
+            if (text[i]).isalpha() is False:
+                consonants -=1
     return(vowels, consonants)
 vowel_and_consonant_count(text)
-'''8 Calculate Digital Root
-Write a function that takes an integer as an input and returns the sum of its
-digits.
->>> num = 2468
->>> digital_root(num)
-20
-'''
+#8 Calculate Digital Root
+#Write a function that takes an integer as an input and returns the sum of its digits.
+num = 2468
+def digital_root(num):
+    sum = 0
+    num = str(num)
+    for i in range(0, len(num)):
+        sum += int(num[i])
+    return sum
+digital_root(num)
+
