@@ -51,48 +51,74 @@ fuel_efficiency(70, 21.5)
 n = 12345
 def decodeNumbers(n):
     j = 0
-    while n>0:
-        n//10 == n
-        j+=1
-        print(j)
-    #part1 = (n//10)*10
-    #part2 = n%part1
-    #return part2*10**4 + part1/10
+    n1 = n
+    while n1>0:
+        n1 = n//10**j
+        j += 1
+    part1 = (n//10)*10
+    part2 = n % part1
+    return part2*10**(j-2) + part1/10
 decodeNumbers(n)
-j = 0
-while n>0:
-    n//10 == n
-    j+=1
-    print(j)
-'''6 Min & Max but with Loops!
-Oh no! Oski hacked you computer again... now you have lost the ability to use
-min() and max().
-6.1 For Loops
-Write two functions to manually find the minimum and maximum values in a
-list of numbers with for loops.
->>> nums = [2024, 98, 131, 2, 3, 72]
->>> find_min_with_for_loop(nums)
-2
->>> find_max_with_for_loops(nums)
-2024
-6.2 While Loops
-Write two functions to manually find the minimum and maximum values in a
-list of numbers with while loops.
->>> nums = [2024, 98, 131, 2, 3, 72]
->>> find_min_with_while_loop(nums)
-2
-2
->>> find_max_with_while_loops(nums)
-2024
-7 Counting Vowels
-Write a function that takes a string as an input and returns the number of vowels
-in the string and the number of consonants in the string as tuple. Don’t forget
-about capital letters! Hint: You can use .isalpha() to check if a character is
-a letter.
->>> text = "UC Berkeley, founded in 1868!"
->>> vowel_and_consonant_count(text)
-(4, 11)
-8 Calculate Digital Root
+#6 Min & Max but with Loops!
+#Oh no! Oski hacked you computer again... now you have lost the ability to use
+#min() and max().
+#6.1 For Loops
+#Write two functions to manually find the minimum and maximum values in a
+#list of numbers with for loops.
+numbers = [2024, 98, 131, 2, 3, 72]
+def find_min_with_for_loop(nums):
+    lowest = 10**42 # the meaning of life, the universe, and everything
+    for i in range(0, len(numbers)):
+        if nums[i] < lowest:
+            lowest = nums[i]
+    return lowest
+find_min_with_for_loop(numbers)
+def find_max_with_for_loops(nums):
+    highest = -10**42 # the meaning of life, the universe, and everything
+    for i in range(0, len(numbers)):
+        if nums[i] > highest:
+            highest = nums[i]
+    return highest
+find_max_with_for_loops(numbers)
+#6.2 While Loops
+#Write two functions to manually find the minimum and maximum values in a
+#list of numbers with while loops.
+nums = [2024, 98, 131, 2, 3, 72]
+def find_min_with_while_loop(nums):
+    i=0
+    lowest = 10**42
+    while i<len(nums):
+        if nums[i] < lowest:
+            lowest = nums[i]
+        i += 1
+    return lowest
+find_min_with_while_loop(nums)
+def find_max_with_while_loops(nums):
+    i=0
+    highest = -10**42
+    while i<len(nums):
+        if nums[i] > highest:
+            highest = nums[i]
+        i += 1
+    return highest
+find_max_with_while_loops(nums)
+#7 Counting Vowels
+#Write a function that takes a string as an input and returns the number of vowels
+#in the string and the number of consonants in the string as tuple. Don’t forget
+#about capital letters! Hint: You can use .isalpha() to check if a character is a letter.
+text = "         "
+def vowel_and_consonant_count(text):
+    consonants = 0
+    vowels = 0
+    vowelcharacters = ("a", "e", "i", "o", "u", "A", "E", "I", "O", "U")    
+    for i in range(0,len(text)):
+        if text[i] in vowelcharacters:
+            vowels +=1
+        if text[i] not in vowelcharacters:
+            consonants +=1
+    return(vowels, consonants)
+vowel_and_consonant_count(text)
+'''8 Calculate Digital Root
 Write a function that takes an integer as an input and returns the sum of its
 digits.
 >>> num = 2468
